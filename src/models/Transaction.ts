@@ -2,7 +2,7 @@ import { IndexSpecification } from "mongodb"
 
 export type Transaction = {
     coin: string
-    raw: object
+    raw: any
     resolved: boolean
     createdAt: Date
     updatedAt: Date

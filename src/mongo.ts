@@ -1,15 +1,15 @@
 import { connect, Db, MongoClient } from "mongodb";
 import { mongoUri } from "./config";
 import { AccountIndexes } from "./models/Account";
+import { BlockIndexes } from "./models/Block";
 import { TransactionIndexes } from "./models/Transaction";
-// import { BlockIndexes } from "./models/Block";
 
 export let client: MongoClient
 export let db: Db
 
 export const collectionNames = {
     accounts: 'accounts',
-    // btc_blocks: 'btc_blocks',
+    blocks: 'blocks',
     txs: 'txs'
 }
 
@@ -53,6 +53,7 @@ export const connectDb = async () => {
 
         await Promise.all([
             db.collection(collectionNames.accounts).createIndexes(AccountIndexes),
+            db.collection(collectionNames.blocks).createIndexes(BlockIndexes),
             db.collection(collectionNames.txs).createIndexes(TransactionIndexes)
         ])
 
