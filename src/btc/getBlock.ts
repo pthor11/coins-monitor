@@ -5,7 +5,7 @@ import { client, collectionNames, connectDb, db } from "../mongo"
 
 const downloadBlock = async (height: number, page: number = 1, txs: any[] = []): Promise<any> => {
     try {
-        const result = await callBlockbook({ method: blockbookMethods.block, data: `/${height}?page=${page}` })
+        const result = await callBlockbook({ method: blockbookMethods.block, data: `/block/${height}?page=${page}` })
 
         if (result.page < result.totalPages) {
             return downloadBlock(height, page + 1, [...result.txs, ...txs])
@@ -25,7 +25,7 @@ export const getBlock = async (height: number) => {
     try {
         const block = await downloadBlock(height)
 
-        await db.collection(collectionNames.txs).insertMany(block.transactions.map(transaction => {
+        await db.collection(collectionNames.txs).insertMany(block.txs.map(transaction => {
             return {
                 coin: Coin.btc,
                 raw: transaction,

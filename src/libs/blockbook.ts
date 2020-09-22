@@ -6,7 +6,7 @@ export const callBlockbook = async ({ method, data, params = {} }: { method: str
     try {
         if (method === blockbookMethods.sendtx) {
             const result = await axios({
-                url: `${btcBlockbook}/${method}/`,
+                url: `${btcBlockbook!}/${method}/`,
                 data,
                 method: 'post',
                 httpsAgent: new https.Agent({
@@ -16,7 +16,7 @@ export const callBlockbook = async ({ method, data, params = {} }: { method: str
             return result.data
         } else {
             const result = await axios({
-                url: `${btcBlockbook}/${method}/${data}`,
+                url: `${btcBlockbook!}/${method}/${data}`,
                 params,
                 method: 'get',
                 httpsAgent: new https.Agent({

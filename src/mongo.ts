@@ -14,9 +14,8 @@ export const collectionNames = {
 }
 
 export const connectDb = async () => {
-
     try {
-        client = await connect(mongoUri, {
+        client = await connect(mongoUri!, {
             useUnifiedTopology: true,
             useNewUrlParser: true,
             ignoreUndefined: true
