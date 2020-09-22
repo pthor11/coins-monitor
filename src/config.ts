@@ -2,7 +2,7 @@ import { config } from "dotenv";
 
 config()
 
-if (!process.env.PORT) throw new Error(`port for api must be provided`)
+// if (!process.env.PORT) throw new Error(`port for api must be provided`)
 export const port = process.env.PORT
 
 if (!process.env.MONGO) throw new Error(`mongo uri must be provided`)
@@ -14,6 +14,7 @@ export const btcBlockbook = process.env.BTC_BLOCKBOOK
 export const blockbookMethods = {
     tx: 'tx',
     utxo: 'utxo',
+    block: 'block',
     sendtx: 'sendtx',
     address: 'address',
     estimatefee: 'estimatefee',
