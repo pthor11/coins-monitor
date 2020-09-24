@@ -7,11 +7,11 @@
     "dev:api": "nodemon --watch 'src/**/*.ts' --exec ts-node src/api/index.ts",
     "dev:btc": "nodemon --watch 'src/**/*.ts' --exec ts-node src/btc/index.ts",
     "start:api": "node dist/api/index.js",
-    "start:btc": "node dist/btc/index.js",
+    "start:btc": "node dist/btc/index.js --unhandled-rejections=strict",
     "dep:api": "docker-compose -f docker-compose.api.yml up --build -d",
-    "dep:btc": "docker-compose -f docker-compose.btc.yml up --build -d",
+    "dep:btc": "docker-compose -f docker-compose.btc.yml up --build -d --remove-orphans",
     "dep:api:log": "docker-compose -f docker-compose.api.yml up --build",
-    "dep:btc:log": "docker-compose -f docker-compose.btc.yml up --build"
+    "dep:btc:log": "docker-compose -f docker-compose.btc.yml up --build --remove-orphans"
   },
   "repository": {
     "type": "git",
