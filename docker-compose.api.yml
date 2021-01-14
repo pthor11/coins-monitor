@@ -1,0 +1,11 @@
+version: "3.7"
+services: 
+  coins-monitor-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile.api
+    restart: always
+    env_file: 
+      - .api.env
+    ports:
+        - "6060:6060"
